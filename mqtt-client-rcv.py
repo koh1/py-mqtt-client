@@ -1,4 +1,5 @@
 import paho.mqtt.client as mqtt
+import datetime
 import sys
 
 def on_connect(client, userdata, flags, rc):
@@ -6,7 +7,7 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("test")
 
 def on_message(client, userdata, msg):
-    print(str(msg.payload))
+    print("%s,%s"%(str(msg.payload), datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")))    
 
 p = sys.argv
 
