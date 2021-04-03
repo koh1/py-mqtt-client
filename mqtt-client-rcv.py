@@ -8,8 +8,9 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
     date_format = "%Y-%m-%d %H:%M:%S.%f"
-    sent_time = datetime.datetime.strptime(str(msg.payload), date_format)
-    print("%s,%s"%(sent_time.strftime(date_format), datetime.datetime.now().strftime(date_format)))    
+    print(type(str(msg.payload))
+    #sent_time = datetime.datetime.strptime(str(msg.payload), date_format)
+    #print("%s,%s"%(sent_time.strftime(date_format), datetime.datetime.now().strftime(date_format)))    
 
 p = sys.argv
 
