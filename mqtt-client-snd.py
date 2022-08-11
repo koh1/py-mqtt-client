@@ -12,8 +12,8 @@ def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
 
 p = sys.argv
-if len(p) < 3:
-    print("Usage: python %s <broker host> <broker port> <interval>" % p[0])
+if len(p) < 5:
+    print("Usage: python %s <broker host> <broker port> <interval> <topic>" % p[0])
     sys.exit(0)
 
 client = mqtt.Client()
@@ -23,7 +23,7 @@ client.connect(p[1], int(p[2]), 60)
 interval = float(p[3])
 
 while(True):
-    client.publish("test", datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"))
+    client.publish(p[4], datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"))
     time.sleep(interval)
 
 
